@@ -1,19 +1,23 @@
-var mongoose = require('mongoose'), 
-    Schema = mongoose.Schema;
 
-var imageSchema = new Schema({
-    
-    uuid: {type: String, required: true},
-    data: {type: String, required: true},
-    created_at: Date
-}, 
-{collection: 'images'} );
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-imageSchema.pre('save', function(next) {
-    if(!this.created_at)
-        this.created_at = new Date();
+/*
+    Image Schema for storing images in the
+    mongodb database
+*/
+var ImageSchema = new Schema({
+    imageName: {
+        type: String,
+        default: "none",
+        required: true
+    },
+    imageData: {
+        type: String,
+        required: true
+    }
 });
 
-var Image = mongoose.model('Image', imageSchema);
+var Image = mongoose.model('Image', ImageSchema);
 
 module.exports = Image;
