@@ -23,3 +23,8 @@ git branch <branch_name> (create a new branch with that name)
 git checkout <branch_name> (moves to a different branch)
 ```
 
+### In case of merging branches
+
+We will review each others work, and make sure nothing breaks before implementing the changes, and the scrum master will have the last review, trying to catch anything.
+
+### 
