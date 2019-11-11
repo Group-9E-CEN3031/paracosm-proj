@@ -1,3 +1,27 @@
+HTTP Requests
+
+GET
+
+ROS file for UUID:
+    localhost:5000/api/launch/:uuid
+YAML file for UUID:
+    localhost:5000/api/calibration/:uuid
+Image file for UUID:
+    localhost:5000/api/image/:uuid
+Also a download for each:
+    localhost:5000/api/:fileType/:uuid/download
+
+POST
+
+ROS file for UUID:
+    localhost:5000/api/launch
+YAML file for UUID:
+    localhost:5000/api/calibration
+Image file for UUID:
+    localhost:5000/api/image
+
+
+
 GET Requests:
 
 axios.get('/api/<file_type>/<uuid>')
