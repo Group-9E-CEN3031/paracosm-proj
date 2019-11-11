@@ -4,24 +4,30 @@ var dataController = require('../controllers/data.server.controller.js'),
 
 router.route('/launch/:launchID')
     .get(dataController.list)
-    .post(dataController.create)
     .delete(dataController.delete);
+
+router.route('/launch')
+    .post(dataController.setTypeLaunch, dataController.create);
 
 router.route('/launch/:launchID/download')
     .get(dataController.read);
 
 router.route('/calibration/:calibrationID')
     .get(dataController.list)
-    .post(dataController.create)
     .delete(dataController.delete);
+
+router.route('/calibration')
+    .post(dataController.setTypeCalibration, dataController.create);
 
 router.route('/calibration/:calibrationID/download')
     .get(dataController.read);
 
 router.route('/image/:imageID')
     .get(dataController.list)
-    .post(dataController.create)
     .delete(dataController.delete);
+
+router.route('/image')
+    .post(dataController.setTypeImage, dataController.create);
 
 router.route('/image/:imageID/download')
     .get(dataController.read);

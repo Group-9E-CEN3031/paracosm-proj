@@ -1,0 +1,94 @@
+GET Requests:
+
+axios.get('/api/<file_type>/<uuid>')
+    .then(res => {
+        if(res.status === 404)
+            // handle error (res.err)
+        else
+        {
+            const fileList = res.data;
+            // do something with the files
+        }
+    });
+
+axios.get('/api/<file_type>/<uuid>/download')
+    .then(res => {
+        if(res.status === 404)
+            // handle error (res.err)
+        else
+        {
+            const fileData = req.data;
+            // create file with the data and send to client
+            /* req.data = {
+                uuid: uuid,
+                data: data
+            } */
+        }
+    });
+
+Possible file download solution:
+
+function newFile(data, fileName) {
+    //IE11 support
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+        let blob = new Blob([data], {type: "text/plain"});
+        // for image, do "image/png" or "image/jpeg" for type
+        window.navigator.msSaveOrOpenBlob(blob, fileName);
+    } else {// other browsers
+        let file = new File([data], fileName, {type: "text/plain"});
+        // for image, do "image/png" or "image/jpeg" for type
+        let exportUrl = URL.createObjectURL(file);
+        window.location.assign(exportUrl);
+        URL.revokeObjectURL(exportUrl);
+    }
+}
+
+Another possible solution (define blob the same way as above function):
+
+function saveFile(blob, filename) {
+  if (window.navigator.msSaveOrOpenBlob) {
+    window.navigator.msSaveOrOpenBlob(blob, filename);
+  } else {
+    const a = document.createElement('a');
+    document.body.appendChild(a);
+    const url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = filename;
+    a.click();
+    setTimeout(() => {
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    }, 0)
+  }
+}
+
+
+
+POST Requests (upload to database):
+
+axios.post('/api/<file_type>', {uuid: uuid, data: fileData})
+    .then(res => {
+        console.log(res);
+    });
+
+
+file types: launch, calibration, image
+
+
+
+For encoding an image to be uploaded to mongo:
+
+var fs = require("fs");
+
+fs.readFile('image.jpg', function(err, data) {
+  if (err) throw err;
+
+  // Encode to base64
+  var encodedImage = new Buffer(data, 'binary').toString('base64');
+});
+
+
+And then to decode the image from mongo:
+
+// Decode from base64
+var decodedImage = new Buffer(encodedImage, 'base64').toString('binary');

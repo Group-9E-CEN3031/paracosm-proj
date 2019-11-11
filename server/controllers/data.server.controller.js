@@ -28,7 +28,7 @@ createData = function(req, res, model)
         if(err)
         {
             console.log(err);
-            res.status(400).send(err);
+            res.status(404).send(err);
         }
         else
         {
@@ -42,7 +42,7 @@ readData = function(req, res, model)
 {
     if(req.data)
     {
-        /* Will need to make methods within the models
+        /* May need to make methods within the models
            for reading that specific data type */
         res.send(req.data);
     }
@@ -121,6 +121,21 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
     executeForDataType(req, res, listData);
 };
+
+exports.setTypeLaunch = function(req, res, next) {
+    req.type = 'launch';
+    next();   
+}
+
+exports.setTypeCalibration = function(req, res, next) {
+    req.type = 'calibration';
+    next();
+}
+
+exports.setTypeImage = function(req, res, next) {
+    req.type = 'image';
+    next();
+}
 
 exports.launchByID = function(req, res, next, id) {
     Launch.find({uuid: id}, function(err, launches) {
