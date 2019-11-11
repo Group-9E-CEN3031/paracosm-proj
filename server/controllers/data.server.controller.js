@@ -23,6 +23,7 @@ executeForDataType = function(req, res, func)
 createData = function(req, res, model)
 {
     var data = new model(req.body);
+    console.log('data: ', data);
 
     data.save(function(err) {
         if(err)

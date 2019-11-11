@@ -12,6 +12,8 @@ var dataSchema = new Schema({
 dataSchema.pre('save', function(next) {
     if(!this.created_at)
         this.created_at = new Date();
+
+    next();
 });
 
 // Third parameter is the collection name
