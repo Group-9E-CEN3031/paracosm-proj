@@ -142,6 +142,14 @@ class Upload extends Component {
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
+            <Dropzone
+              onFilesAdded={this.onFilesAdded}
+              disabled={this.state.uploading || this.state.successfullUploaded}
+            />
+            <Dropzone
+              onFilesAdded={this.onFilesAdded}
+              disabled={this.state.uploading || this.state.successfullUploaded}
+            />
           </div>
           <a className="Logo" target='_blank' rel="noopener noreferrer" href="https://paracosm.io">
             <img className="paracosm-logo" alt="" src={logo} />
