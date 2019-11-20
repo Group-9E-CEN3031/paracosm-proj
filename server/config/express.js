@@ -4,7 +4,10 @@ const path = require("path"),
   morgan = require("morgan"),
   bodyParser = require("body-parser"),
   dataRouter = require("../routes/data.server.routes"),
-  multer = require("multer");
+  multer = require("multer"),
+  fs = require('fs');
+
+//var uploadejs = fs.readFileSync('upload.ejs', 'utf-8');
 
 module.exports.init = () => {
   /* 
@@ -56,18 +59,25 @@ module.exports.init = () => {
   // add a router
   app.use("/api", dataRouter);
 
+  
+  app.get('/temp', (req, res) => {
+    res.send('Hello')
+    ejs.renderFile(Users/davie/GitHub/paracosm-proj/paracosm-proj/client/src/views + '/upload.ejs', function(err,data){
+        console.log('HELLO')
+    })
+})
   // Handle the upload route
   app.post("/upload", (req, res) => {
     // res.send('done');
     upload(req, res, err => {
       if (err) {
-        res.render("index", { msg: err });
+        res.render('upload', { msg: err });
       } else {
         // If file is not selected
         if (req.file == undefined) {
-          res.render("index", { msg: "No file selected!" });
+          res.render('upload', { msg: "No file selected!" });
         } else {
-          res.render("index", { msg: "File uploaded successfully!" });
+          res.render('upload', { msg: "File uploaded successfully!" });
         }
       }
     });
