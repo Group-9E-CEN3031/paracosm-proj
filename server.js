@@ -2,14 +2,12 @@ const express = require('express')
 const bodyParser= require('body-parser')
 const app = express()
 const multer = require('multer');
+const config = require('./config')
 fs = require('fs-extra')
 app.use(bodyParser.urlencoded({extended: true}))
 
 const MongoClient = require('mongodb').MongoClient
 ObjectId = require('mongodb').ObjectId
-
-const myurl = 'mongodb://localhost:27017';
-
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -22,9 +20,9 @@ var storage = multer.diskStorage({
 
 var upload = multer({ storage: storage })
 
-MongoClient.connect(myurl, (err, client) => {
+MongoClient.connect(config.db.uri, (err, client) => {
   if (err) return console.log(err)
-  db = client.db('test') 
+  db = client.db('upload') 
   app.listen(3000, () => {
     console.log('listening on 3000')
   })
@@ -45,9 +43,6 @@ app.post('/uploadfile', upload.single('myFile'), (req, res, next) => {
     return next(error)
 
   }
-
- 
-    res.send(file)
  
 })
 //Uploading multiple files
