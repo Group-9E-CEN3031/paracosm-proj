@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Dropzone from "./dropzone/Dropzone";
+import DropzoneROS from "./dropzone/DropzoneROS";
+import DropzoneYML from "./dropzone/DropzoneYML";
 import Progress from "./progress/Progress";
 import {Link} from 'react-router-dom'
 import logo from '../../assets/paracosm.png';
@@ -111,26 +113,26 @@ class Upload extends Component {
   }
 
   renderActions() {
-    if (this.state.successfullUploaded) {
-      return (
-        <button
-          onClick={() =>
-            this.setState({ files: [], successfullUploaded: false })
-          }
-        >
-          Clear
-        </button>
-      );
-    } else {
-      return (
-        <button
-          disabled={this.state.files.length < 0 || this.state.uploading}
-          onClick={this.uploadFiles}
-        >
-          Upload
-        </button>
-      );
-    }
+    // if (this.state.successfullUploaded) {
+    //   return (
+    //     <button
+    //       onClick={() =>
+    //         this.setState({ files: [], successfullUploaded: false })
+    //       }
+    //     >
+    //       Clear
+    //     </button>
+    //   );
+    // } else {
+    //   return (
+    //     <button
+    //       disabled={this.state.files.length < 0 || this.state.uploading}
+    //       onClick={this.uploadFiles}
+    //     >
+    //       Upload
+    //     </button>
+    //   );
+    // }
   }
 
   render() {
@@ -138,7 +140,7 @@ class Upload extends Component {
 
     return (
       <div className="Upload">
-        <div className="Actions">{this.renderActions()}</div>
+      //  <div className="Actions">{this.renderActions()}</div>
         <a class="buttonLink">
           <Link to="/Home">
             <button class="logoutButton" type="button">
@@ -153,14 +155,17 @@ class Upload extends Component {
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
-            <Dropzone
+            <DropzoneROS
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
-            <Dropzone
+            <DropzoneYML
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
+            <button onClick={this.uploadFiles}>
+            Submit Files
+            </button>
           </div>
           <form>
          <input

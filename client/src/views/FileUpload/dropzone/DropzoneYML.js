@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Dropzone.css";
 import cloudUpload from '../../../assets/cloudUpload.svg'
 
-class Dropzone extends Component {
+class DropzoneYML extends Component {
   constructor(props) {
     super(props);
     this.state = { hightlight: false };
@@ -80,10 +80,10 @@ class Dropzone extends Component {
           className="Icon"
           src={cloudUpload}
         />
-        <span>Select Image File</span>
+        <span>Select YML File</span>
       </div>
     );
   }
 }
 
-export default Dropzone;
+export default DropzoneYML;
