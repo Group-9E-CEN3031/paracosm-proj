@@ -14,7 +14,8 @@ class Upload extends Component {
       files: [],
       uploading: false,
       uploadProgress: {},
-      successfullUploaded: false
+      successfullUploaded: false,
+      uuid: ''
     };
 
     this.onFilesAdded = this.onFilesAdded.bind(this);
@@ -75,11 +76,19 @@ class Upload extends Component {
       });
 
       const formData = new FormData();
-      formData.append("file", file, file.name);
+      var uuid = this.state.uuid;
+      var name = uuid.concat("-", file.name)
+      formData.append("file", file, name);
+      console.log("filename", name);
       req.open("POST", "http://localhost:3000/upload");
       req.send(formData);
     });
   }
+  changeHandler = event => {
+  this.setState({
+    uuid: event.target.value
+  });
+}
 
   renderProgress(file) {
     const uploadProgress = this.state.uploadProgress[file.name];
@@ -125,6 +134,8 @@ class Upload extends Component {
   }
 
   render() {
+    console.log("uuid", this.state.uuid);
+
     return (
       <div className="Upload">
         <div className="Actions">{this.renderActions()}</div>
@@ -151,6 +162,11 @@ class Upload extends Component {
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
           </div>
+          <form>
+         <input
+         onChange={this.changeHandler}
+         />
+     </form>
           <a className="Logo" target='_blank' rel="noopener noreferrer" href="https://paracosm.io">
             <img className="paracosm-logo" alt="" src={logo} />
             <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>

@@ -6,8 +6,8 @@ const BUCKET_NAME = 'uploadimagesparacosm';
 var isDeleted = false;
 
 const s3 = new AWS.S3({
-    accessKeyId: '',
-    secretAccessKey: ''
+    accessKeyId: 'AKIAI5OHRA7V6GIT235Q',
+    secretAccessKey: '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'
 });
 
 const uploadFile = (file) => {
