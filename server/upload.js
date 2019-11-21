@@ -4,10 +4,11 @@ const AWS = require('aws-sdk');
 var path = require("path");
 const BUCKET_NAME = 'uploadimagesparacosm';
 var isDeleted = false;
+var config = require('./config/config');
 
 const s3 = new AWS.S3({
-    accessKeyId: '',
-    secretAccessKey: ''
+    accessKeyId: config.aws.key,
+    secretAccessKey: config.aws.secretKey
 });
 
 const uploadFile = (file) => {
