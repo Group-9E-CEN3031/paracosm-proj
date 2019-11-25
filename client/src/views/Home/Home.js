@@ -22,8 +22,6 @@ class Home extends Component {
             <p><input type="text" name="E-MAIL" id="E-MAIL" /></p>
             <text>Password</text>
             <p><input type="text" name="Password" id="Password" /></p>
-            <text>UUID</text>
-            <p><input type="text" name="UUID" id="UUID" /></p>
             <a class="Buttons">
               <Link to="/Upload">
                 <button class="loginButton" type="button">

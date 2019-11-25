@@ -71,7 +71,7 @@
 
 button {
     font-family: "Roboto medium", sans-serif;
-    font-size: 14px;
+    font-size: 20px;
     display: inline-block;
     height: 36px;
     min-width: 88px;
@@ -80,18 +80,13 @@ button {
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     border: 0;
     border-radius: 2px;
     background: rgb(43,61,67);
     color: #fff;
     outline: 0;
+    margin-left: 22vw;
+
 }
 
 button:hover {
@@ -125,4 +120,14 @@ button:disabled {
     background-color: #6eb9f7;
     background-size: 100%;
     transition: background 0s;
+}
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
+  margin-left: 21vw;
+
 }

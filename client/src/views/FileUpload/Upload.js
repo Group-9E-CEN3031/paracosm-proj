@@ -7,6 +7,8 @@ import {Link} from 'react-router-dom'
 import logo from '../../assets/paracosm.png';
 import checkCircleOutline from '../../assets/checkCircleOutline.svg'
 import "./Upload.css";
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
 
 
 class Upload extends Component {
@@ -149,6 +151,13 @@ class Upload extends Component {
           </Link>
         </a>
         <span className="Title">Upload Files</span>
+        <form>
+        <input
+       type="text"
+       placeholder="Enter UUID"
+       onChange={this.changeHandler}
+       />
+       </form>
         <div className="Content">
           <div>
             <Dropzone
@@ -163,15 +172,14 @@ class Upload extends Component {
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
-            <button onClick={this.uploadFiles}>
+            <h1>
+            </h1>
+            <button onClick={this.uploadFiles}
+            classname="Button">
             Submit Files
             </button>
           </div>
-          <form>
-         <input
-         onChange={this.changeHandler}
-         />
-     </form>
+
           <a className="Logo" target='_blank' rel="noopener noreferrer" href="https://paracosm.io">
             <img className="paracosm-logo" alt="" src={logo} />
             <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
