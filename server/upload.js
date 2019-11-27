@@ -27,6 +27,14 @@ const uploadFile = (file) => {
         if (err) {
             throw err;
         }
+        s3.getObject({Bucket: BUCKET_NAME, Key: file.name},function(err,data){
+          if (err){
+            console.log(err, err.stack)
+          }
+          else{
+            console.log('--------------------OBJECT DATA--------------', JSON.stringify(data) + '-----------END -------------');
+          }
+        })
         console.log(`File uploaded successfully. ${data.Location}`);
     });
 };
@@ -99,3 +107,4 @@ module.exports = function upload(req, res) {
   })
   form.parse(req)
 }
+
