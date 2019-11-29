@@ -69,6 +69,28 @@
   min-width: 300px;
   }
 
+
+.hyperLink{
+  font-family: "Roboto medium", sans-serif;
+  font-size: 30px;
+  display: inline-block;
+  height: 50px;
+  min-width: 88px;
+  padding: 6px 16px;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 0;
+  border-radius: 3px;
+  background: rgb(43,61,67);
+  color: #fff;
+  outline: 0;
+  position: absolute;
+  top: 3vh;
+  right: 42vw;
+}
+
 button {
     font-family: "Roboto medium", sans-serif;
     font-size: 20px;
@@ -85,7 +107,6 @@ button {
     background: rgb(43,61,67);
     color: #fff;
     outline: 0;
-    margin-left: 22vw;
 
 }
 
@@ -109,6 +130,11 @@ button:disabled {
   position: absolute;
   top: 3vh;
   right: 12vw;
+}
+.buttonHyperLink {
+  position: absolute;
+  top: 3vh;
+  right: 30vw;
 }
 
 .logoutButton {

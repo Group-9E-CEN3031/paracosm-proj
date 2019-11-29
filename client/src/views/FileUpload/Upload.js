@@ -150,6 +150,13 @@ class Upload extends Component {
             </button>
           </Link>
         </a>
+        <a class="buttonDownload">
+          <Link to="/Download">
+            <button class="logoutButton" type="button">
+              Download
+            </button>
+          </Link>
+        </a>
         <span className="Title">Upload Files</span>
         <form>
         <input
