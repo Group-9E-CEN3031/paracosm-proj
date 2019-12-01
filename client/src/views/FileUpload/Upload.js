@@ -5,6 +5,8 @@ import DropzoneYML from "./dropzone/DropzoneYML";
 import Progress from "./progress/Progress";
 import {Link} from 'react-router-dom'
 import logo from '../../assets/paracosm.png';
+import device from '../../assets/px80.png';
+
 import checkCircleOutline from '../../assets/checkCircleOutline.svg'
 import "./Upload.css";
 import { Grid, Row, Col } from 'react-flexbox-grid';
@@ -188,7 +190,7 @@ class Upload extends Component {
           </div>
 
           <a className="Logo" target='_blank' rel="noopener noreferrer" href="https://paracosm.io">
-            <img className="paracosm-logo" alt="" src={logo} />
+            <img className="px80" alt="" src={device} />
             <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
           </a>
           <div className="Files">

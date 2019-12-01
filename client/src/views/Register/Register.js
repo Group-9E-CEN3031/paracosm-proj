@@ -18,13 +18,13 @@ class Register extends Component {
               <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
             </a>
             <text>Enter E-Mail</text>
-            <p><input type="text" name="E-MAIL" id="E-MAIL" /></p>
+            <p><input type="login" name="E-MAIL" id="E-MAIL" /></p>
             <text>Enter Password</text>
-            <p><input type="text" name="Password" id="Password" /></p>
+            <p><input type="login" name="Password" id="Password" /></p>
             <text>Confirm Password</text>
-            <p><input type="text" name="Confirm-Password" id="Confirm-Password" /></p>
+            <p><input type="login" name="Confirm-Password" id="Confirm-Password" /></p>
             <Link to="/Home">
-              <button class="homeButton" type="button">
+              <button class="buttonSubmit" type="button">
                 Submit
               </button>
             </Link>

@@ -17,6 +17,10 @@
   width: 100%;
 
 }
+.root{
+   width: '100%';
+   backgroundColor: theme.palette.common.black;
+}
 
 .Files {
   margin-left: 32px;

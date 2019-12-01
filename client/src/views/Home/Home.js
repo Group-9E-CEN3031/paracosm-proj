@@ -19,17 +19,17 @@ class Home extends Component {
                 <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
             </a>
             <text>Username</text>
-            <p><input type="text" name="E-MAIL" id="E-MAIL" /></p>
+            <p><input  type="login" name="E-MAIL" id="E-MAIL" /></p>
             <text>Password</text>
-            <p><input type="text" name="Password" id="Password" /></p>
+            <p><input type="login" name="Password" id="Password" /></p>
             <a class="Buttons">
               <Link to="/Upload">
-                <button class="loginButton" type="button">
+                <button className="buttonLogin">
                   Login
                 </button>
               </Link>
               <Link to="/Register">
-                <button class="registerButton" type="button">
+                <button className="buttonRegister" type="button">
                   Register
                 </button>
               </Link>
