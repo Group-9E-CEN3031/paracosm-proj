@@ -5,6 +5,8 @@ var path = require("path");
 const BUCKET_NAME = 'uploadimagesparacosm';
 var isDeleted = false;
 var config = require('./config/config');
+var filePath = require('./data/download.json');
+        
 
 const s3 = new AWS.S3({
     accessKeyId: config.aws.key,
@@ -27,14 +29,25 @@ const uploadFile = (file) => {
         if (err) {
             throw err;
         }
-        s3.getObject({Bucket: BUCKET_NAME, Key: file.name},function(err,data){
-          if (err){
-            console.log(err, err.stack)
-          }
-          else{
-            console.log('--------------------OBJECT DATA--------------', JSON.stringify(data) + '-----------END -------------');
-          }
-        })
+      const keyDownload = file.name;
+       const downloadFile = (filePath, BUCKET_NAME, keyDownload) => {
+          s3.getObject({Bucket: BUCKET_NAME, Key: keyDownload}, (err,data) => {
+            if (err){
+              console.log(err, err.stack)
+            }
+            else{
+              console.log(filePath)
+              fs.writeFile(filePath.toString(),(data.Body.toString()), (err)=>{
+                if (err){
+                  console.log(err);
+                }
+              });
+              console.log('--------------------OBJECT DATA--------------', JSON.stringify({data}) + '-----------END -------------');
+            }
+          })
+        }
+        downloadFile(filePath, BUCKET_NAME, keyDownload);
+       
         console.log(`File uploaded successfully. ${data.Location}`);
     });
 };
