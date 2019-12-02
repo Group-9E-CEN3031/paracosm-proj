@@ -1,6 +1,6 @@
 ## Introduction
 
-This project was created as part of CEN3031 (Introduction to Software Engineering) at the University of Florida. We worked with the client, Paracosm, in order to build out a web-app with their desired functionality in order to get real-world experience in our industry. It's goal is to be able to upload PX-80 calibration files, associated with a unique UUID, and to version them accordingly. The client also desired to have download capabilities, including a listing of the most recent files for each UUID. 
+This project was created as part of CEN3031 (Introduction to Software Engineering) at the University of Florida. We worked with the client, Paracosm, in order to build out a web-app with their desired functionality in order to get real-world experience in our industry. Its goal is to be able to upload PX-80 calibration files, associated with a unique UUID, and to version them accordingly. The client also desired to have download capabilities, including a listing of the most recent files for each UUID. 
 
 ### Team Members
 
