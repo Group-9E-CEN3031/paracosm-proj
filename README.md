@@ -5,9 +5,13 @@ This project was created as part of CEN3031 (Introduction to Software Engineerin
 ### Team Members
 
 Max Barkow - Project Manager
+
 Fernando Rivera - Scrum Master
+
 David Espantoso - Dev Team
+
 Matt Ionescu - Dev Team
+
 Waddy Leonvil - Dev Team
 
 ### Hosting
