@@ -1,17 +1,22 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-This project contains an example project board meant to showcase how one can be used. The issues posted to it are not real issues.
+## Introduction
 
-#### _**IMPORTANT NOTE**_ - 
-This project does not have a mongoDB connection setup. For:
-- local development: create a config file (make sure to name it config.js) in the config folder, which exports your db.uri connection. An example is provided, config/config.example.js. This file will be ignored by git so your db credentials will be kept safe when the app is deployed.
-- production: Since the config file is not pushed when you deploy your app, you must specifiy your db uri in heorku. Set the uri in heroku as specified in [this](https://devcenter.heroku.com/articles/config-vars) resource. Make sure you name the environement variable "DB_URI".
+This project was created as part of CEN3031 (Introduction to Software Engineering) at the University of Florida. We worked with the client, Paracosm, in order to build out a web-app with their desired functionality in order to get real-world experience in our industry. It's goal is to be able to upload PX-80 calibration files, associated with a unique UUID, and to version them accordingly. The client also desired to have download capabilities, including a listing of the most recent files for each UUID. 
 
-## Getting Started
-This repository aims to assist you in beginning work on a MERN stack application with a solid file structure as a foundation. To get started make a copy of this template repo for your project teams.
+### Team Members
 
-Since this project will hold both the client application and the server application there will be node modules in two different places. First run `npm install` from the root. After this you will run `npm run-script install-all` from the root. From now on run this command anytime you want to install all modules again. This is a script we have defined in package.json .
+Max Barkow - Project Manager
+Fernando Rivera - Scrum Master
+David Espantoso - Dev Team
+Matt Ionescu - Dev Team
+Waddy Leonvil - Dev Team
 
-This app can be deployed directly to heroku since there is a script defined in package.json which will automatically handle building and deploying the app. For more information on deploying to heroku reference the extra resources at the bottom of this file. 
+### Hosting
+
+The project is hosted [here](https://paracosm-project.herokuapp.com/) using Heroku, a cloud-based platform as a service. 
+
+### Current Functionality
+
+The team has been able to create working upload sections for each of the file types, and they are associated with the UUID provided, where it is then uploaded to an AWS bucket. The downloading functionality is not fully developed, but the skeleton of it is present in the deployed version, with static values populating the table for demo purposes.
 
 ## File structure
 #### `client` - Holds the client application
@@ -31,9 +36,6 @@ This app can be deployed directly to heroku since there is a script defined in p
 - #### `tests` - This holds all of our server tests that we have defined
 - #### `server.js` - Defines npm behaviors and packages for the client
 #### `package.json` - Defines npm behaviors like the scripts defined in the next section of the README
-#### `.gitignore` - Tells git which files to ignore
-#### `README` - This file!
-
 
 ## Available Scripts
 
@@ -43,37 +45,3 @@ In the project directory, you can run:
 
 Runs both the client app and the server app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view the client in the browser.
-
-### `npm run-script client`
-
-Runs just the client app in development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view the client in the browser.
-
-
-### `npm run-script server`
-
-Runs just the server in development mode.<br>
-
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-If deploying to heroku this does not need to be run since it is handled by the heroku-postbuild script<br>
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn how to setup a local MongoDB instance for testing, check out how to [Connect to MongoDB](https://docs.mongodb.com/guides/server/drivers/).
-
-To learn how to deploy a full-stack web app to heroku, check out [this great guide](https://daveceddia.com/deploy-react-express-app-heroku/).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
