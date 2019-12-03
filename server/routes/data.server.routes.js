@@ -2,7 +2,14 @@ var dataController = require('../controllers/data.server.controller.js'),
     express = require('express'),
     router = express.Router();
 
-router.route('/launch/:launchID')
+router.route('/:uuid')
+    .get(dataController.getUrls);
+
+router.param('uuid', dataController.getByUUID);
+
+module.exports = router;
+
+/*router.route('/launch/:launchID')
     .get(dataController.list)
     .delete(dataController.delete);
 
@@ -34,6 +41,4 @@ router.route('/image/:imageID/download')
 
 router.param('launchID', dataController.launchByID);
 router.param('calibrationID', dataController.calibrationByID);
-router.param('imageID', dataController.imageByID);
-
-module.exports = router;
+router.param('imageID', dataController.imageByID);*/
