@@ -77,7 +77,7 @@ getMostRecentImage = function(uuid, files) {
     return new Promise(resolve => {
         let params = {
             Bucket: BUCKET_NAME,
-            Prefix: uuid + '-image.jpg'
+            Prefix: uuid + '-image.png'
         };
 
         s3.listObjectVersions(params, function (err, data) {

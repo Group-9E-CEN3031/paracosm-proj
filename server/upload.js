@@ -25,8 +25,8 @@ const uploadFile = (file) => {
       case 'ros':
         ext = 'calibration.ros';
         break;
-      case 'jpg':
-        ext = 'image.jpg';
+      case 'png':
+        ext = 'image.png';
         break;
       default:
         ext = '.txt';
