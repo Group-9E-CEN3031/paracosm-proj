@@ -14,10 +14,30 @@ const uploadFile = (file) => {
     // Read content from the file
     const fileContent = fs.readFileSync(file.path);
 
+    let parts = file.name.split('.');
+    let ext = parts.length > 0 ? parts[parts.length - 1] : 'txt';
+    switch(ext)
+    {
+      case 'launch':
+        ext = 'launch.launch';
+        break;
+      case 'yml':
+        ext = 'calibration.yml';
+        break;
+      case 'png':
+        ext = 'image.png';
+        break;
+      default:
+        ext = '.txt';
+        break;
+    }
+
+    let name = parts[0].split('-')[0].concat('-', ext);
+
     // Setting up S3 upload parameters
     const params = {
         Bucket: BUCKET_NAME,
-        Key: file.name, // File name you want to save as in S3
+        Key: name, // File name you want to save as in S3
         Body: fileContent
     };
 
