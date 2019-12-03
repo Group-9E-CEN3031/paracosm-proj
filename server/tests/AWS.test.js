@@ -34,7 +34,7 @@ describe('Testing file upload and download to AWS bucket', function() {
     
             s3.upload(params, function(err, data) {
                 should.not.exist(err);
-                console.log(data);
+                //console.log(data);
                 versions.push(data.VersionId);
             });
         }
@@ -47,24 +47,24 @@ describe('Testing file upload and download to AWS bucket', function() {
             for(let i = 0; i < files.length; i++)
             {
                 let name = files[i];
-
+                //console.log(name, versions[i])
                 const params = {
                     Bucket: BUCKET_NAME,
-                    Key: name,
-                    VersionId: versions[i]
+                    Key: name//,
+                    //VersionId: versions[i]
                 };
         
                 //console.log(filesContent[i].toString());
         
                 s3.getObject(params, function(err, data) {
                     should.not.exist(err);
-                    console.log(data);
+                    //console.log(data);
                     data.Body.toString().should.equal(filesContent[i].toString());
                 });
             }
     
             done();
-        }, 500);
+        }, 2000);
     });
 
     it('should be able to delete files', function(done) {
@@ -72,11 +72,11 @@ describe('Testing file upload and download to AWS bucket', function() {
             for(let i = 0; i < files.length; i++)
             {
                 let name = files[i];
-                console.log(name, versions[i]);
+                //console.log(name, versions[i]);
                 const params = {
                     Bucket: BUCKET_NAME,
-                    Key: name,
-                    VersionId: versions[i]
+                    Key: name//,
+                    //VersionId: versions[i]
                 };
         
                 s3.deleteObject(params, function(err, data) {
@@ -87,6 +87,6 @@ describe('Testing file upload and download to AWS bucket', function() {
             }
     
             done();
-        }, 3000);
+        }, 5000);
     });
 })
