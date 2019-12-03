@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import fire from "../config/Fire";
 import logo from "./paracosm.png";
 import Route from "react";
@@ -25,7 +25,8 @@ class Login extends Component {
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(u => {
         console.log(u);
-        return <Redirect to="/Upload"></Redirect>;
+        console.log(this.props)
+        this.props.history.push("/Upload")
       })
       .catch(error => {
         document.getElementById("errorMessage").innerHTML =
@@ -39,7 +40,6 @@ class Login extends Component {
     fire
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(u => {})
       .then(u => {
         console.log(u);
       })
@@ -103,9 +103,12 @@ class Login extends Component {
               </p>
             </font>
           </div>
-          <Link to="/Upload">
-            <button class="btn btn-primary">Login</button>
-          </Link>
+
+       
+            <button class="btn btn-primary" onClick={this.login}>
+              Login
+            </button>
+       
 
           <button
             onClick={this.signup}
@@ -119,4 +122,4 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+export default withRouter(Login);
