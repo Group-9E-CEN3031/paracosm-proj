@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 var path = require("path");
 const BUCKET_NAME = 'uploadimagesparacosm';
 var isDeleted = false;
-var config = require('./config/config');
+var config = require('./config/config.js');
 
 const s3 = new AWS.S3({
     accessKeyId: config.aws.key,
