@@ -13,7 +13,7 @@ getMostRecentLaunch = function(uuid, files) {
     return new Promise(resolve => {
         let params = {
             Bucket: BUCKET_NAME,
-            Prefix: uuid + '-launch.yml'
+            Prefix: uuid + '-launch.launch'
         };
 
         s3.listObjectVersions(params, function (err, data) {
@@ -46,7 +46,7 @@ getMostRecentCalibration = function(uuid, files) {
     return new Promise(resolve => {
         let params = {
             Bucket: BUCKET_NAME,
-            Prefix: uuid + '-calibration.ros'
+            Prefix: uuid + '-calibration.yml'
         };
 
         s3.listObjectVersions(params, function (err, data) {

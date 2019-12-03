@@ -20,10 +20,10 @@ const uploadFile = (file) => {
     switch(ext)
     {
       case 'yml':
-        ext = 'launch.yml';
+        ext = 'launch.launch';
         break;
       case 'ros':
-        ext = 'calibration.ros';
+        ext = 'calibration.yml';
         break;
       case 'png':
         ext = 'image.png';

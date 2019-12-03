@@ -14,7 +14,7 @@ const s3 = new AWS.S3({
 describe('Testing file upload and download to AWS bucket', function() {
     this.timeout(10000);
 
-    let files = ['12345-launch.yml', '12345-calibration.ros', '12345-image.jpg'];
+    let files = ['12345-launch.launch', '12345-calibration.yml', '12345-image.png'];
     let filesContent = [];
     let versions = [];
 
