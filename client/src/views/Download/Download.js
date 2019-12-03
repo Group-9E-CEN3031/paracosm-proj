@@ -46,7 +46,7 @@ class Home extends Component {
 
           <div className="Main-Page">
           <a class="buttonLink">
-            <Link to="/Home">
+            <Link to="/Login">
               <button class="logoutButton" type="button">
                 Logout
               </button>
