@@ -11,62 +11,82 @@ const s3 = new AWS.S3({
     secretAccessKey: config.aws.secretKey
 });
 
-const testFilePath = 'testupload.txt';
-const testFileName = 'testupload.txt';
-
 describe('Testing file upload and download to AWS bucket', function() {
     this.timeout(10000);
 
+    let files = ['12345-launch.yml', '12345-calibration.ros', '12345-image.jpg'];
+    let filesContent = [];
+    let versions = [];
+
     it('should be able to upload files', function(done) {
-        const fileContent = fs.readFileSync(testFilePath);
+        for(let i = 0; i < files.length; i++)
+        {
+            let name = files[i];
 
-        var params = {
-            Bucket: BUCKET_NAME,
-            Key: testFileName,
-            Body: fileContent
-        };
+            const fileContent = fs.readFileSync(name);
+            filesContent.push(fileContent);
 
-        s3.upload(params, function(err, data) {
-            should.not.exist(err);
-            console.log(data);
-        });
+            var params = {
+                Bucket: BUCKET_NAME,
+                Key: name,
+                Body: fileContent
+            };
+    
+            s3.upload(params, function(err, data) {
+                should.not.exist(err);
+                console.log(data);
+                versions.push(data.VersionId);
+            });
+        }
 
         done();
     });
 
     it('should be able to download files', function(done) {
         setTimeout(function() {
-            const params = {
-                Bucket: BUCKET_NAME,
-                Key: testFilePath
-            };
-    
-            var fileContents = fs.readFileSync(testFilePath);
-    
-            s3.getObject(params, function(err, data) {
-                should.not.exist(err);
-                console.log(data.Body.toString());
-                data.Body.toString().should.equal(fileContents.toString());
-            });
+            for(let i = 0; i < files.length; i++)
+            {
+                let name = files[i];
+
+                const params = {
+                    Bucket: BUCKET_NAME,
+                    Key: name,
+                    VersionId: versions[i]
+                };
+        
+                //console.log(filesContent[i].toString());
+        
+                s3.getObject(params, function(err, data) {
+                    should.not.exist(err);
+                    console.log(data);
+                    data.Body.toString().should.equal(filesContent[i].toString());
+                });
+            }
     
             done();
-        }, 200);
+        }, 500);
     });
 
     it('should be able to delete files', function(done) {
         setTimeout(function() {
-            const params = {
-                Bucket: BUCKET_NAME,
-                Key: testFilePath
-            };
-    
-            s3.deleteObject(params, function(err, data) {
-                should.not.exist(err);
-    
-                console.log('File deleted ', data);
-            });
+            for(let i = 0; i < files.length; i++)
+            {
+                let name = files[i];
+                console.log(name, versions[i]);
+                const params = {
+                    Bucket: BUCKET_NAME,
+                    Key: name,
+                    VersionId: versions[i]
+                };
+        
+                s3.deleteObject(params, function(err, data) {
+                    should.not.exist(err);
+        
+                    console.log('File deleted ', data);
+                });
+            }
     
             done();
-        }, 1000);
+        }, 3000);
     });
 })
