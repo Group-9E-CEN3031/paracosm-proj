@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   //{this.state.user ? (<Upload/>) : (<Login/>)}
-  //<Route exact path="/Login" component={Login} />
+ 
   render() {
     return (
       <div>
