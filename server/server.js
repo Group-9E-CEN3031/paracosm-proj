@@ -13,6 +13,6 @@ server.use(cors(corsOptions))
 
 server.post('/upload', upload)
 
-server.listen(3000, () => {
-  console.log('Server started! Heyyo')
+server.listen(5000, () => {
+  console.log('Server started!')
 })
