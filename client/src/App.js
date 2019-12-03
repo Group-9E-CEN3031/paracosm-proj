@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./views/Home/Home";
@@ -34,21 +34,21 @@ class App extends Component {
   //{this.state.user ? (<Upload/>) : (<Login/>)}
   //<Route exact path="/Login" component={Login} />
   render() {
-    return(
+    return (
       <div>
-      <Switch>
-        <Route exact path="/Home" component={Home} />
-        <Route exact path="/Register" component={Register} />
-        <Route exact path="/Upload" component={Upload} />
-        <Route exact path="/Download" component={Download} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/">
-          <Redirect to="/Login" />
-        </Route>
-        
-        <Route component={NotFound} />
-      </Switch>
-    </div>
+        <Switch>
+          <Route exact path="/Home" component={Home} />
+          <Route exact path="/Register" component={Register} />
+          <Route exact path="/Upload" component={Upload} />
+          <Route exact path="/Download" component={Download} />
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/">
+            <Redirect to="/Login" />
+          </Route>
+
+          <Route component={NotFound} />
+        </Switch>
+      </div>
     );
   }
 }
