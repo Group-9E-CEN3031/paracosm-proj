@@ -10,11 +10,11 @@ module.exports.init = () => {
         connect to database
         - reference README for db uri
     */
-    mongoose.connect(process.env.DATABASE_URL || require('./config').db.uri, {
-        useNewUrlParser: true
-    });
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useFindAndModify', false);
+    //mongoose.connect(process.env.DATABASE_URL || require('./config').db.uri, {
+    //    useNewUrlParser: true
+    //});
+    //mongoose.set('useCreateIndex', true);
+    //mongoose.set('useFindAndModify', false);
 
     // initialize app
     const app = express();
