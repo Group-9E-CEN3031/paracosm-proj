@@ -19,10 +19,10 @@ const uploadFile = (file) => {
     let ext = parts.length > 0 ? parts[parts.length - 1] : 'txt';
     switch(ext)
     {
-      case 'yml':
+      case 'launch':
         ext = 'launch.launch';
         break;
-      case 'ros':
+      case 'yml':
         ext = 'calibration.yml';
         break;
       case 'png':
