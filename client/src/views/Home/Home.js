@@ -14,6 +14,7 @@ class Home extends Component {
     render() {
         return (
           <div className="Main-Page">
+
             <a className="Logo" target='_blank' rel="noopener noreferrer" href="https://paracosm.io">
                 <img className="paracosm-logo" src={logo} />
                 <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>

@@ -3,15 +3,13 @@ import Dropzone from "./dropzone/Dropzone";
 import DropzoneROS from "./dropzone/DropzoneROS";
 import DropzoneYML from "./dropzone/DropzoneYML";
 import Progress from "./progress/Progress";
-import {Link} from 'react-router-dom'
-import logo from '../../assets/paracosm.png';
-import device from '../../assets/px80.png';
+import { Link } from "react-router-dom";
+import logo from "../../assets/paracosm.png";
+import device from "../../assets/px80.png";
 
-import checkCircleOutline from '../../assets/checkCircleOutline.svg'
+import checkCircleOutline from "../../assets/checkCircleOutline.svg";
 import "./Upload.css";
-import { Grid, Row, Col } from 'react-flexbox-grid';
-
-
+import { Grid, Row, Col } from "react-flexbox-grid";
 
 class Upload extends Component {
   constructor(props) {
@@ -21,7 +19,7 @@ class Upload extends Component {
       uploading: false,
       uploadProgress: {},
       successfullUploaded: false,
-      uuid: ''
+      uuid: ""
     };
 
     this.onFilesAdded = this.onFilesAdded.bind(this);
@@ -83,7 +81,7 @@ class Upload extends Component {
 
       const formData = new FormData();
       var uuid = this.state.uuid;
-      var name = uuid.concat("-", file.name)
+      var name = uuid.concat("-", file.name);
       formData.append("file", file, name);
       console.log("filename", name);
       req.open("POST", "http://localhost:3000/upload");
@@ -91,10 +89,10 @@ class Upload extends Component {
     });
   }
   changeHandler = event => {
-  this.setState({
-    uuid: event.target.value
-  });
-}
+    this.setState({
+      uuid: event.target.value
+    });
+  };
 
   renderProgress(file) {
     const uploadProgress = this.state.uploadProgress[file.name];
@@ -105,7 +103,7 @@ class Upload extends Component {
           <img
             className="CheckIcon"
             alt="done"
-            src= {checkCircleOutline}
+            src={checkCircleOutline}
             style={{
               opacity:
                 uploadProgress && uploadProgress.state === "done" ? 0.5 : 0.5
@@ -144,9 +142,9 @@ class Upload extends Component {
 
     return (
       <div className="Upload">
-      //  <div className="Actions">{this.renderActions()}</div>
+        <div className="Actions">{this.renderActions()}</div>
         <a class="buttonLink">
-          <Link to="/Home">
+          <Link to="/Login">
             <button class="logoutButton" type="button">
               Logout
             </button>
@@ -161,12 +159,12 @@ class Upload extends Component {
         </a>
         <span className="Title">Upload Files</span>
         <form>
-        <input
-       type="text"
-       placeholder="Enter UUID"
-       onChange={this.changeHandler}
-       />
-       </form>
+          <input
+            type="text"
+            placeholder="Enter UUID"
+            onChange={this.changeHandler}
+          />
+        </form>
         <div className="Content">
           <div>
             <Dropzone
@@ -181,17 +179,23 @@ class Upload extends Component {
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
-            <h1>
-            </h1>
-            <button onClick={this.uploadFiles}
-            classname="Button">
-            Submit Files
+            <h1></h1>
+            <button onClick={this.uploadFiles} classname="Button">
+              Submit Files
             </button>
           </div>
 
-          <a className="Logo" target='_blank' rel="noopener noreferrer" href="https://paracosm.io">
+          <a
+            className="Logo"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://paracosm.io"
+          >
             <img className="px80" alt="" src={device} />
-            <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
+            <i
+              className="fas fa-external-link-alt external-link"
+              data-fa-transform="up-6"
+            ></i>
           </a>
           <div className="Files">
             {this.state.files.map(file => {
@@ -201,7 +205,7 @@ class Upload extends Component {
                   {this.renderProgress(file)}
                 </div>
               );
-          })}
+            })}
           </div>
         </div>
       </div>
