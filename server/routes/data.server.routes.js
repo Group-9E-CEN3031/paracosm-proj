@@ -5,6 +5,9 @@ var dataController = require('../controllers/data.server.controller.js'),
 router.route('/:uuid')
     .get(dataController.getUrls);
 
+router.route('/')
+    .get(dataController.emptyUUID);
+
 router.param('uuid', dataController.getByUUID);
 
 module.exports = router;
