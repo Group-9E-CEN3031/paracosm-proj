@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import fire from "../config/Fire";
 import logo from "./paracosm.png";
 import Route from "react";
-import Upload from "./FileUpload/Upload"
+import Upload from "./FileUpload/Upload";
 //import fire from '../../../server/config/Fire';
 
 class Login extends Component {
@@ -23,12 +23,15 @@ class Login extends Component {
     fire
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(u => {})
+      .then(u => {
+        console.log(u);
+        return <Redirect to="/Upload"></Redirect>;
+      })
       .catch(error => {
-        document.getElementById("errorMessage").innerHTML = "ERROR: " + error.message;
+        document.getElementById("errorMessage").innerHTML =
+          "ERROR: " + error.message;
         console.log(error.message);
       });
-      
   }
 
   signup(e) {
@@ -95,13 +98,14 @@ class Login extends Component {
               />
             </font>
             <font color="black">
-              <p id="errorMessage"><strong></strong></p>
+              <p id="errorMessage">
+                <strong></strong>
+              </p>
             </font>
           </div>
-
-          <button class="btn btn-primary" onClick={this.login} >
-            Login
-          </button>
+          <Link to="/Upload">
+            <button class="btn btn-primary">Login</button>
+          </Link>
 
           <button
             onClick={this.signup}
