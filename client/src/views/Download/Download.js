@@ -45,7 +45,7 @@ class Download extends Component {
           uuid: '',
           links: [DEFAULT_LINK, DEFAULT_LINK, DEFAULT_LINK]
         };
-        
+
         this.changeHandler = this.changeHandler.bind(this);
         this.getLinks = this.getLinks.bind(this);
         this.getImageLink = this.getImageLink.bind(this);
@@ -88,7 +88,7 @@ class Download extends Component {
       axios.get(BASE_URL + '/api/' + uuid)
         .then(res => {
           console.log(res);
-          if(!res || !res.data) 
+          if(!res || !res.data)
             this.setState({links: [DEFAULT_LINK, DEFAULT_LINK, DEFAULT_LINK]});
 
           this.setState({links: [res.data.image, res.data.calibration, res.data.launch]});
@@ -107,9 +107,9 @@ class Download extends Component {
 
       return "_blank";
     };
-    
+
     render() {
-      
+
         return (
 
           <div className="Main-Page">
@@ -128,13 +128,12 @@ class Download extends Component {
           </Link>
           </a>
           <form>
-          <input
-            type="text"
-            placeholder="Enter UUID"
-            align="center"
-            onChange={this.changeHandler}
-          />
-        </form>
+            <input
+              placeholder="Enter UUID"
+              onChange={this.changeHandler}
+            />
+          </form>
+
           <Paper className="root">
     <Table aria-label="simple table">
       <TableHead>
@@ -168,6 +167,7 @@ class Download extends Component {
   </Paper>
           <tr>
        <td>
+
        <a class="hyperLink" href="https://console.aws.amazon.com/s3/home?region=us-east-2#" target="_blank">View AWS Bucket</a>
        </td>
     </tr>

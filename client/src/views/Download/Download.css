@@ -1,3 +1,5 @@
+
+
 .Upload {
     display: flex;
     flex-direction: column;
@@ -157,13 +159,13 @@ button:disabled {
     background-size: 100%;
     transition: background 0s;
 }
-input[type=text] {
+input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
   box-sizing: border-box;
   border: 2px solid black;
   border-radius: 4px;
-  margin-left: 21vw;
+  margin-left: 0vw;
 
 }

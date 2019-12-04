@@ -165,21 +165,26 @@ class Upload extends Component {
             onChange={this.changeHandler}
           />
         </form>
+
         <div className="Content">
           <div>
             <Dropzone
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
+            <br></br>
             <DropzoneROS
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
+            <br></br>
             <DropzoneYML
               onFilesAdded={this.onFilesAdded}
               disabled={this.state.uploading || this.state.successfullUploaded}
             />
-            <h1></h1>
+            <br></br>
+            <br></br>
+
             <button onClick={this.uploadFiles} classname="Button">
               Submit Files
             </button>
@@ -200,9 +205,12 @@ class Upload extends Component {
           <div className="Files">
             {this.state.files.map(file => {
               return (
-                <div key={file.name} className="Row">
+                <div key={file.name}>
                   <span className="Filename">{file.name}</span>
                   {this.renderProgress(file)}
+                  <br></br>
+                  <br></br>
+                  <br></br>
                 </div>
               );
             })}
