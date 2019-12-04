@@ -9,6 +9,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import axios from 'axios';
 
 const useStyles = makeStyles({
   root: {
@@ -34,14 +35,81 @@ const rows = [
   createData('45123489', '45123489-upload.jpg', '45123489-upload.YML', '45123489-upload.ROS')
 ];
 
-class Home extends Component {
+const BASE_URL = 'http://localhost:5000';
+const DEFAULT_LINK = null;
+
+class Download extends Component {
     constructor(props) {
         super(props);
         this.state = {
+          uuid: '',
+          links: [DEFAULT_LINK, DEFAULT_LINK, DEFAULT_LINK]
         };
-
+        
+        this.changeHandler = this.changeHandler.bind(this);
+        this.getLinks = this.getLinks.bind(this);
+        this.getImageLink = this.getImageLink.bind(this);
+        this.getCalibrationLink = this.getCalibrationLink.bind(this);
+        this.getLaunchLink = this.getLaunchLink.bind(this);
+        this.getTarget = this.getTarget.bind(this);
     }
+
+    changeHandler = event => {
+      this.setState({
+        uuid: event.target.value
+      });
+
+      this.getLinks(event.target.value);
+    };
+
+    getImageLink = function() {
+      console.log(this.state.links);
+      if(typeof(this.state.links) === 'undefined')
+        return DEFAULT_LINK;
+
+      return this.state.links[0];
+    }
+
+    getCalibrationLink = function() {
+      if(typeof(this.state.links) === 'undefined')
+        return DEFAULT_LINK;
+
+      return this.state.links[1];
+    }
+
+    getLaunchLink = function() {
+      if(typeof(this.state.links) === 'undefined')
+        return DEFAULT_LINK;
+
+      return this.state.links[2];
+    }
+
+    getLinks = function(uuid) {
+      axios.get(BASE_URL + '/api/' + uuid)
+        .then(res => {
+          console.log(res);
+          if(!res || !res.data) 
+            this.setState({links: [DEFAULT_LINK, DEFAULT_LINK, DEFAULT_LINK]});
+
+          this.setState({links: [res.data.image, res.data.calibration, res.data.launch]});
+        })
+        .catch((error) => {
+          console.log(error);
+          this.setState({links: [DEFAULT_LINK, DEFAULT_LINK, DEFAULT_LINK]});
+        });
+
+      //this.setState({links: [DEFAULT_LINK, DEFAULT_LINK, DEFAULT_LINK]});
+    };
+
+    getTarget = function() {
+      if(typeof(this.state.links) === 'undefined' || this.state.links[0] === DEFAULT_LINK)
+        return "_self";
+
+      return "_blank";
+    };
+    
     render() {
+      
         return (
 
           <div className="Main-Page">
@@ -59,6 +127,14 @@ class Home extends Component {
             </button>
           </Link>
           </a>
+          <form>
+          <input
+            type="text"
+            placeholder="Enter UUID"
+            align="center"
+            onChange={this.changeHandler}
+          />
+        </form>
           <Paper className="root">
     <Table aria-label="simple table">
       <TableHead>
@@ -66,11 +142,17 @@ class Home extends Component {
           <TableCell align="right">UUID</TableCell>
           <TableCell align="right">Image</TableCell>
           <TableCell align="right">YML</TableCell>
-          <TableCell align="right">ROS</TableCell>
+          <TableCell align="right">Launch</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {rows.map(row => (
+        <TableRow>
+          <TableCell component="th" scope="row" align="right">{this.state.uuid}</TableCell>
+          <TableCell component="th" scope="row" align="right"><a target={this.getTarget()} href={this.getImageLink()}>Download Image</a></TableCell>
+          <TableCell component="th" scope="row" align="right"><a target={this.getTarget()} href={this.getCalibrationLink()}>Download Calibration</a></TableCell>
+          <TableCell component="th" scope="row" align="right"><a target={this.getTarget()} href={this.getLaunchLink()}>Download Launch</a></TableCell>
+        </TableRow>
+        {/*rows.map(row => (
           <TableRow key={row.name}>
             <TableCell component="th" scope="row">
               {row.name}
@@ -80,7 +162,7 @@ class Home extends Component {
             <TableCell align="right">{row.carbs}</TableCell>
             <TableCell align="right">{row.protein}</TableCell>
           </TableRow>
-        ))}
+        ))*/}
       </TableBody>
     </Table>
   </Paper>
@@ -99,4 +181,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Download;

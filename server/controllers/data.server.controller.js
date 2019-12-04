@@ -34,7 +34,7 @@ getMostRecentLaunch = function(uuid, files) {
                 VersionId: latest.VersionId
             };
             files.launch = fileParams;
-            console.log(files.launch);
+            //console.log(files.launch);
 
             resolve();
         })
@@ -65,7 +65,7 @@ getMostRecentCalibration = function(uuid, files) {
                 VersionId: latest.VersionId
             };
             files.calibration = fileParams;
-            console.log(files.calibration);
+            //console.log(files.calibration);
 
             resolve();
         })
@@ -96,7 +96,7 @@ getMostRecentImage = function(uuid, files) {
                 VersionId: latest.VersionId
             };
             files.image = fileParams;
-            console.log(files.image);
+            //console.log(files.image);
 
             resolve();
         })
@@ -110,7 +110,7 @@ getMostRecent = async function(uuid) {
     await getMostRecentCalibration(uuid, files);
     await getMostRecentImage(uuid, files);
 
-    console.log(await files);
+    //console.log(await files);
     return files;
 };
 
@@ -128,7 +128,7 @@ createUrl = function(fileParams) {
 exports.getUrls = async function(req, res) {
     let fileParams = await getMostRecent(req.uuid);
     
-    console.log(fileParams);
+    //console.log(fileParams);
     let urls = {};
     if(fileParams.launch != null) urls.launch = createUrl(fileParams.launch);
     if(fileParams.calibration != null) urls.calibration = createUrl(fileParams.calibration);
@@ -137,13 +137,16 @@ exports.getUrls = async function(req, res) {
     res.send(urls);
 };
 
+exports.emptyUUID = function(req, res) {
+    res.status(404).send('Error: Must have a UUID!');
+};
+
 exports.getByUUID = function(req, res, next, id) {
-    console.log(id);
+    //console.log(id);
     if(req) req.uuid = id;
 
     next();
 };
-
 
 /*var mongoose = require('mongoose'),
     Data = require('../models/data.server.model.js'),
