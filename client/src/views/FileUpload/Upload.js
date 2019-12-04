@@ -190,17 +190,9 @@ class Upload extends Component {
             </button>
           </div>
 
-          <a
-            className="Logo"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://paracosm.io"
-          >
-            <img className="px80" alt="" src={device} />
-            <i
-              className="fas fa-external-link-alt external-link"
-              data-fa-transform="up-6"
-            ></i>
+          <a className="Logo" target='_blank' rel="noopener noreferrer" href="https://paracosm.io">
+            <img className="paracosm-logo" alt="" src={logo} />
+            <i className="fas fa-external-link-alt external-link" data-fa-transform="up-6"></i>
           </a>
           <div className="Files">
             {this.state.files.map(file => {
