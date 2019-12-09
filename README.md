@@ -22,6 +22,10 @@ The project is hosted [here](https://paracosm-project.herokuapp.com/) using Hero
 
 The team has been able to create working upload sections for each of the file types, and they are associated with the UUID provided, where it is then uploaded to an AWS bucket. The downloading functionality is not fully developed, but the skeleton of it is present in the deployed version, with static values populating the table for demo purposes.
 
+## Tutorials that helped
+https://malcoded.com/posts/react-file-upload/
+https://stackabuse.com/uploading-files-to-aws-s3-with-node-js/
+
 ## File structure
 #### `client` - Holds the client application
 - #### `public` - This holds all of our static files
