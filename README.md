@@ -39,7 +39,6 @@ https://stackabuse.com/uploading-files-to-aws-s3-with-node-js/
 #### `server` - Holds the server application
 - #### `config` - This holds our configuration files, like mongoDB uri
 - #### `controllers` - These hold all of the callback functions that each route will call
-- #### `models` - This holds all of our data models
 - #### `routes` - This holds all of our HTTP to URL path associations for each unique url
 - #### `tests` - This holds all of our server tests that we have defined
 - #### `server.js` - Defines npm behaviors and packages for the client
@@ -53,3 +52,29 @@ In the project directory, you can run:
 
 Runs both the client app and the server app in development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view the client in the browser.
+
+## Running Locally
+
+If you wish to run the application locally you will have to add a config.js file to the server/config folder in the following format using the AWS Access Key and Secret Key from the final project document:
+'''
+module.exports = {
+    aws: {
+        key: 'AWSAccessKeyId',
+        secretKey: 'AWSSecretKey'
+    }
+};
+'''
+
+Additionally, modify the s3 object in the server/upload.js and server/controllers/data.server.controller.js files from:
+'''
+accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+'''
+
+to
+'''
+accessKeyId: config.aws.key,
+secretAccessKey: config.aws.secretKey
+'''
+
+(Leave the region the same in server/controllers/data.server.controller.js)

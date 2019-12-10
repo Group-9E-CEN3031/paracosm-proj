@@ -5,6 +5,7 @@ const BASE_URL = 'https://localhost:3000';
 
 describe('Testing if requests to each page have a response', function() {
 
+    // Make sure each page responds to the user
     it('home page should respond', function(done) {
         axios.get(BASE_URL + '/Home')
             .then(res => {
@@ -45,6 +46,7 @@ describe('Testing if requests to each page have a response', function() {
         done();
     });
 
+    // All other pages result in 'Page not found'
     it('any other page should be not found', function(done) {
         axios.get(BASE_URL + '/fdaf')
             .then(res => {

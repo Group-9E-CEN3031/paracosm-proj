@@ -4,16 +4,23 @@ const AWS = require('aws-sdk');
 var path = require("path");
 const BUCKET_NAME = 'uploadimagesparacosm';
 var isDeleted = false;
+const config = require('./config/config');
 
-const s3 = new AWS.S3({
+/*const s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+});*/
+
+const s3 = new AWS.S3({
+  accessKeyId: config.aws.key,
+  secretAccessKey: config.aws.secretKey
 });
 
 const uploadFile = (file) => {
     // Read content from the file
     const fileContent = fs.readFileSync(file.path);
 
+    // Change file name based on its extension to make sure it is consistent with downloading
     let parts = file.name.split('.');
     let ext = parts.length > 0 ? parts[parts.length - 1] : 'txt';
     switch(ext)
@@ -92,7 +99,7 @@ const deleteFile = (file) => {
 
     };
 
-    // Uploading files to the bucket
+    // Deleting file from the bucket
     s3.deleteObject(params, function(err, data) {
       if (err)
         console.log(err, err.stack);  // error

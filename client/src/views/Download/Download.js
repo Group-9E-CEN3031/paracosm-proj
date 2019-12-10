@@ -21,20 +21,6 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('44122231', '44122231-upload.jpg', '44122231-upload.YML', '44122231-upload.ROS'),
-  createData('12218998', '12218998-upload.jpg', '12218998-upload.YML', '12218998-upload.ROS'),
-  createData('45547898', '45547898-upload.jpg', '45547898-upload.YML', '45547898-upload.ROS'),
-  createData('23219870', '23219870-upload.jpg', '23219870-upload.YML', '23219870-upload.ROS'),
-  createData('23211121', '23211121-upload.jpg', '23211121-upload.YML', '23211121-upload.ROS'),
-  createData('90908776', '90908776-upload.jpg', '90908776-upload.YML', '90908776-upload.ROS'),
-  createData('45123489', '45123489-upload.jpg', '45123489-upload.YML', '45123489-upload.ROS')
-];
-
 const BASE_URL = 'http://localhost:5000';
 const DEFAULT_LINK = null;
 
@@ -151,17 +137,6 @@ class Download extends Component {
           <TableCell component="th" scope="row" align="right"><a target={this.getTarget()} href={this.getCalibrationLink()}>Download Calibration</a></TableCell>
           <TableCell component="th" scope="row" align="right"><a target={this.getTarget()} href={this.getLaunchLink()}>Download Launch</a></TableCell>
         </TableRow>
-        {/*rows.map(row => (
-          <TableRow key={row.name}>
-            <TableCell component="th" scope="row">
-              {row.name}
-            </TableCell>
-            <TableCell align="right">{row.calories}</TableCell>
-            <TableCell align="right">{row.fat}</TableCell>
-            <TableCell align="right">{row.carbs}</TableCell>
-            <TableCell align="right">{row.protein}</TableCell>
-          </TableRow>
-        ))*/}
       </TableBody>
     </Table>
   </Paper>
