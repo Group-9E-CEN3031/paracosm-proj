@@ -56,25 +56,25 @@ Open [http://localhost:3000](http://localhost:3000) to view the client in the br
 ## Running Locally
 
 If you wish to run the application locally you will have to add a config.js file to the server/config folder in the following format using the AWS Access Key and Secret Key from the final project document:
-'''
+```
 module.exports = {
     aws: {
-        key: 'AWSAccessKeyId',
+        key: `AWSAccessKeyId`,
         secretKey: 'AWSSecretKey'
     }
 };
-'''
+```
 
 Additionally, modify the s3 object in the server/upload.js and server/controllers/data.server.controller.js files from:
-'''
+```
 accessKeyId: process.env.AWS_ACCESS_KEY_ID,
 secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-'''
+```
 
 to
-'''
+```
 accessKeyId: config.aws.key,
 secretAccessKey: config.aws.secretKey
-'''
+```
 
 (Leave the region the same in server/controllers/data.server.controller.js)
