@@ -59,8 +59,8 @@ If you wish to run the application locally you will have to add a config.js file
 ```
 module.exports = {
     aws: {
-        key: `AWSAccessKeyId`,
-        secretKey: 'AWSSecretKey'
+        key: <AWSAccessKeyId>,
+        secretKey: <AWSSecretKey>
     }
 };
 ```
